@@ -74,6 +74,15 @@ PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0
+    android.hardware.keymaster@4.1
+
+# Keystore Hal
+PRODUCT_PACKAGES += \
+    android.system.keystore
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
@@ -86,8 +95,20 @@ PRODUCT_PACKAGES_DEBUG += \
 # Additional Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libpuresoftkeymasterdevice
+    libkeymaster4_1support \
+    libkeymaster4support \
+    libkeymaster_messages \
+    libkeymaster_portable \
+    libpuresoftkeymasterdevice \
+    libgatekeeper \
+    libgatekeeper_aidl
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4_1support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_messages.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_portable.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper_aidl.so
