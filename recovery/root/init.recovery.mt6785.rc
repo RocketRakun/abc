@@ -58,7 +58,7 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
     disabled
     seclabel u:r:recovery:s0
 
-service vendor.keymaster-4-0-beanpod /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
+service vendor.keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
     class early_hal
     user root
     group root drmrpc
@@ -87,17 +87,22 @@ on property:twrp.decrypt.done=true
     stop vendor.keymaster-4-0
     stop vendor.gatekeeper-1-0
 
+on property:ro.crypto.state=unsupported && property:ro.bootmode=recovery
+    stop teei_daemon
+    stop vendor.keymaster-4-0
+    stop vendor.gatekeeper-1-0
+
 on boot
     start health-hal-2-1
 
     mkdir /mnt/vendor/persist
-    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist rw
+    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist rw seclabel=u:object_r:persist_file:s0
 
 on early-fs
     write /proc/bootprof "INIT:early-fs"
-    start vold
 
 on post-fs-data
+    start vold
     mkdir /data/vendor_de 0770 system system
     mkdir /data/vendor_de/0 0770 system system
-    mkdir /data/vendor_de/0/cryptoeng 0770 system system
+    mkdir /data/vendor_de/0/cryptoeng 0770 system system encryption=None
