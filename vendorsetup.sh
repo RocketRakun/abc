@@ -78,7 +78,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_ALLOW_DISABLE_NAVBAR=0
 	
 	# R11.1 Settings
-	export FOX_MAINTAINER_PATCH_VERSION="04"
+	export FOX_MAINTAINER_PATCH_VERSION="default"
 	export FOX_VARIANT="A12-vndk30"
 	export OF_MAINTAINER="Gilanggegea"
 
