@@ -65,7 +65,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     	# OTA
     	export OF_KEEP_DM_VERITY=1
-#    	export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
     	export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
 
 	# Screen Settings
@@ -78,7 +77,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_ALLOW_DISABLE_NAVBAR=0
 	
 	# R11.1 Settings
-#	export FOX_MAINTAINER_PATCH_VERSION="default"
 	export FOX_VARIANT="A12-vndk30"
 	export OF_MAINTAINER="Gilanggegea"
 
