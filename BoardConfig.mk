@@ -16,9 +16,6 @@
 
 DEVICE_PATH := device/infinix/X695C
 
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -54,7 +51,7 @@ AB_OTA_PARTITIONS += \
 # Kernel
 BOARD_KERNEL_CMDLINE := \
 	bootopt=64S3,32N2,64N2 \
-    androidboot.force_normal_boot=1
+    	androidboot.force_normal_boot=1
 
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x40078000
@@ -98,6 +95,7 @@ BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_MAIN_SIZE := 9126805504
 BOARD_MAIN_PARTITION_LIST := \
 	system \
+	system_ext \
 	vendor \
 	product
 
@@ -175,3 +173,6 @@ TW_CUSTOM_BATTERY_POS := "790"
 
 # Maintainer & version
 TW_DEVICE_VERSION := X695C | excaliburXD & RocketRakun
+
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
